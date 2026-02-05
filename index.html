@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Per Te ❤️</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+font-family:-apple-system,BlinkMacSystemFont,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+button{
+padding:18px 40px;
+font-size:22px;
+border:none;
+border-radius:50px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+#message{
+font-size:28px;
+margin-top:40px;
+width:85%;
+min-height:80px;
+}
+
+.cursor{
+display:inline-block;
+width:10px;
+background:white;
+animation:blink 1s infinite;
+margin-left:5px;
+}
+
+@keyframes blink{
+50%{opacity:0;}
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 4s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Soppresa pe amore mio ❤️</h1>
+
+<button id="startBtn">Cliccami</button>
+
+<div id="message"></div>
+
+<script>
+
+const text = "Sei la cosa più preziosa che ho... ti amo da morire piccola principessa ❤️";
+
+const msg = document.getElementById("message");
+
+/* Typing effect */
+function typeWriter(){
+
+let i = 0;
+
+function typing(){
+
+if(i < text.length){
+
+msg.innerHTML =
+text.substring(0,i) + '<span class="cursor"></span>';
+
+i++;
+setTimeout(typing,60);
+
+}else{
+msg.innerHTML = text;
+}
+
+}
+
+typing();
+}
+
+/* Cuori animati */
+function createHearts(){
+
+setInterval(()=>{
+
+let heart = document.createElement("div");
+
+heart.className = "heart";
+heart.innerHTML = "❤️";
+heart.style.left = Math.random()*100 + "vw";
+heart.style.bottom = "-30px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),4000);
+
+},300);
+
+}
+
+/* Evento pulsante */
+document.getElementById("startBtn").addEventListener("click",()=>{
+
+document.getElementById("startBtn").style.display="none";
+
+typeWriter();
+createHearts();
+
+});
+
+</script>
+
+</body>
+</html>
